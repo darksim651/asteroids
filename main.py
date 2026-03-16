@@ -44,7 +44,12 @@ def main():
             if asteroid.collides_with(player):  # Collision detection
                 log_event("player_hit")
                 print("Game over!")
-                sys.exit() 
+                sys.exit()
+            for shot in shots:
+                if asteroid.collides_with(shot):
+                    log_event("asteroid_shot")
+                    asteroid.split()
+                    shot.kill() 
         for object in drawable:                 # Iterates through the group of drawables and updates the screen
             object.draw(screen)
         
